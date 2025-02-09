@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards, Query } from '@nestjs/common';
 import { PostService } from './post.service';
 import { AuthGuard } from '@nestjs/passport';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -15,6 +15,11 @@ export class PostController {
   @Get(':id')
   async getPostById(@Param('id') id: number) {
     return this.postService.findById(id);
+  }
+
+  @Get('author/:authorId')
+  async getPostsByAuthorId(@Param('authorId') authorId: number) {
+    return this.postService.findAllByAuthorId(authorId);
   }
 
   @Post()
