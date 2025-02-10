@@ -10,6 +10,10 @@ export class CommentService {
     private readonly commentRepository: Repository<Comment>,
   ) {}
 
+    async findById(id: number): Promise<Comment | undefined> {
+      return this.commentRepository.findOne({ where: { id } });
+    }
+
   async addComment(userId: number, postId: number, comment: string) {
     const newComment = this.commentRepository.create({ user: { id: userId }, post: { id: postId }, comment });
     return this.commentRepository.save(newComment);
