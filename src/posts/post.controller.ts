@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards, Request } from '@nestjs/common';
 import { PostService } from './post.service';
 import { AuthGuard } from '@nestjs/passport';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -10,6 +10,12 @@ export class PostController {
   @Get()
   async getAllPosts() {
     return this.postService.findAll();
+  }
+
+  @Get('feed')
+  @UseGuards(AuthGuard('jwt'))
+  async getFeed(@Request() req) {
+    return this.postService.getFeed(req.user.id);
   }
 
   @Get(':id')
@@ -43,4 +49,5 @@ export class PostController {
   async deletePost(@Param('id') id: number) {
     return this.postService.delete(id);
   }
+
 }
