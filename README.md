@@ -1,24 +1,61 @@
 # TwitterClone
 
-Backend of clone of Twitter (Node.JS, Nest.JS, TypeScript, TypeORM), with features: register/login user, create/delete post, create/delete comment, like/unlike, follow/unfollow and feed.
+A backend implementation of a Twitter clone using **Node.js**, **NestJS**, **TypeScript**, and **TypeORM**. This project provides core social media features, including:
 
-It is designed for relational DB, tested on PostgreSQL.
+- User registration and authentication (JWT-based login)
+- Creating and deleting posts
+- Creating and deleting comments
+- Liking and unliking posts
+- Following and unfollowing users
+- Generating a personalized feed
 
-Postman collection is provided to test Twitter Clone API.postman_collection.json.
+## Database
 
-Example of .env file (should be placed to root of the project and should contain connection properties): 
+The backend is designed for a relational database and has been tested with **PostgreSQL**.
 
-PORT=3000
+## Setup and Installation
 
-JWT_SECRET=mysecretkey
+### Prerequisites
 
-DB_HOST=localhost
+Ensure you have the following installed:
+- **Node.js** (latest LTS recommended)
+- **PostgreSQL**
+- **npm** or **yarn**
 
-DB_PORT=5432
+### Installation Steps
 
-DB_USER=postgres
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/TwitterClone.git
+   cd TwitterClone
+   ```
 
-DB_PASS=yourpassword
+2. Install dependencies:
 
-DB_NAME=nestjs_auth
+   ```sh
+   npm install  # or yarn install
+   ```
 
+3. Configure environment variables:
+Create a .env file in the root of the project with the following content (example):
+
+   ```ini
+   PORT=3000
+   JWT_SECRET=mysecretkey
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_USER=postgres
+   DB_PASS=yourpassword
+   DB_NAME=nestjs_auth
+   ```
+
+4. Start the development server:
+
+   ```sh
+   npm run start:dev
+   ```
+
+## API Documentation
+
+A Postman collection is provided for testing the API:
+Twitter Clone API.postman_collection.json
